@@ -1,0 +1,32 @@
+schema_version: "1.1"
+name: spec-due-date
+description: A plain feature request produces specs/<feature>/spec.md with acceptance criteria and no implementation detail.
+tags: [ablation, write]
+runs: 2
+plugins: ["../..", "../../../engineering-paved-path", "../../../research-tools", "../../../architecture-review"]
+execution:
+  prompt: "Prepare a spec for adding a due date to todos. Use the feature name `due-date`."
+  max_turns: 20
+  timeout_seconds: 600
+  allowed_tools: [Read, Glob, Grep, Agent, Write]
+context:
+  scaffold_script: scaffold.sh
+graders:
+  - name: spec-file-created
+    type: file_exists
+    path: specs/due-date/spec.md
+  - name: has-acceptance-criteria
+    type: regex
+    target: { source: file, path: specs/due-date/spec.md }
+    pattern: 'acceptance criteria[\s\S]*\bAC-1\b'
+    flags: i
+  - name: no-implementation-detail
+    type: regex
+    target: { source: file, path: specs/due-date/spec.md }
+    pattern: '\bsrc/|\.ts\b|store\.ts|\baddTodo\b|\blistTodos\b|\bcompleteTodo\b|\bfunction\b'
+    match: not_contains
+  - name: spec-creator-dispatched
+    type: tool_used
+    tool: Agent
+    input_match: 'sdd-engineering:spec-creator'
+    arm: with-only

@@ -1,0 +1,12 @@
+{
+  "name": "todo-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc --noEmit --allowImportingTsExtensions --strict src/*.ts test/*.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  }
+}

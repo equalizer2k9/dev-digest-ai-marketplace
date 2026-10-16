@@ -1,0 +1,34 @@
+schema_version: "1.1"
+name: plan-from-spec
+description: implementation-planner turns an approved spec into plan.md that traces every AC, takes its check command from package.json and invents no requirements.
+tags: [single-arm, write]
+runs: 2
+plugins: ["../..", "../../../engineering-paved-path", "../../../research-tools", "../../../architecture-review"]
+execution:
+  prompt: "Plan the implementation of specs/due-date/spec.md and save the plan as specs/due-date/plan.md."
+  max_turns: 20
+  timeout_seconds: 600
+  allowed_tools: [Read, Glob, Grep, Agent, Write]
+context:
+  scaffold_script: scaffold.sh
+graders:
+  - name: plan-file-created
+    type: file_exists
+    path: specs/due-date/plan.md
+  - name: traces-every-ac
+    type: regex
+    target: { source: file, path: specs/due-date/plan.md }
+    pattern: '^(?=[\s\S]*\bAC-1\b)(?=[\s\S]*\bAC-2\b)(?=[\s\S]*\bAC-3\b)'
+  - name: check-command-from-package-json
+    type: regex
+    target: { source: file, path: specs/due-date/plan.md }
+    pattern: 'npm (run )?test|npm run typecheck'
+  - name: no-invented-ac
+    type: regex
+    target: { source: file, path: specs/due-date/plan.md }
+    pattern: '\bAC-([4-9]|\d{2,})\b'
+    match: not_contains
+  - name: planner-dispatched
+    type: tool_used
+    tool: Agent
+    input_match: 'sdd-engineering:implementation-planner'
