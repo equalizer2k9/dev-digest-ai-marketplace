@@ -1,0 +1,94 @@
+{
+  "app": {
+    "title": "dev-digest-ai-marketplace",
+    "tagline": "Claude Code plugins for spec-driven engineering",
+    "loading": "Loading catalog…",
+    "loadError": "The catalog index could not be loaded: {error}",
+    "footer": "Built from commit {commit} of the marketplace repository."
+  },
+  "nav": {
+    "catalog": "Catalog",
+    "whatsNew": "What's new",
+    "gettingStarted": "Getting started",
+    "repository": "GitHub"
+  },
+  "home": {
+    "searchLabel": "Search plugins, skills and agents",
+    "searchPlaceholder": "Search by name, description, keyword, README or skill text…",
+    "stats": "{plugins} plugins · {skills} skills · {agents} agents",
+    "allPlugins": "All plugins",
+    "results": "{count} results for “{query}”",
+    "noResults": "Nothing matches “{query}”.",
+    "pluginsHeading": "Plugins",
+    "artifactsHeading": "Skills and agents"
+  },
+  "plugin": {
+    "version": "Version",
+    "owner": "Owner",
+    "license": "License",
+    "category": "Category",
+    "compatibility": "Compatibility",
+    "claudeCode": "Claude Code {range}",
+    "dependencies": "Dependencies",
+    "noDependencies": "None",
+    "install": "Install",
+    "copyInstall": "Copy install",
+    "copied": "Copied",
+    "copyFailed": "Copy failed — select the command",
+    "components": "Components",
+    "skills": "Skills",
+    "agents": "Agents",
+    "readme": "README",
+    "source": "Source",
+    "notFound": "No plugin named “{name}” in this marketplace."
+  },
+  "artifact": {
+    "skill": "Skill",
+    "agent": "Agent",
+    "plugin": "Plugin",
+    "namespacedName": "Namespaced name",
+    "invoke": "Invoke",
+    "model": "Model",
+    "tools": "Tools",
+    "maxTurns": "Max turns",
+    "argumentHint": "Arguments",
+    "invocation": "Invocation",
+    "userOnly": "User-invoked only (model invocation disabled)",
+    "userAndModel": "User or model",
+    "modelOnly": "Model only",
+    "source": "Source file",
+    "notFound": "No skill or agent with id “{id}”."
+  },
+  "whatsNew": {
+    "title": "What's new",
+    "intro": "Releases of every plugin, newest first. Taken from each plugin's CHANGELOG.md; a release with a git tag links to it.",
+    "tag": "tag {tag}",
+    "untagged": "not tagged yet",
+    "empty": "No releases yet."
+  },
+  "gettingStarted": {
+    "title": "Getting started",
+    "addTitle": "1. Add the marketplace",
+    "addText": "In a Claude Code session:",
+    "addShellText": "Or from your shell:",
+    "projectText": "To share it with everyone in a repository, run this once there and commit the .claude/settings.json it writes:",
+    "installTitle": "2. Install a plugin",
+    "installText": "Pick a plugin in the catalog and use its Copy install button, or run:",
+    "installScopeText": "Add --scope project to enable it for the repository instead of only for you. Dependencies are installed with it.",
+    "updateTitle": "3. Keep it up to date",
+    "updateText": "Auto-update is off for third-party marketplaces. Turn it on in /plugin → Marketplaces, or update manually:",
+    "verifyTitle": "4. Verify",
+    "verifyText": "List installed plugins and see what one adds to your sessions:"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "back": "Back to the catalog"
+  },
+  "common": {
+    "skillCount": "{count} skills",
+    "skillCountOne": "1 skill",
+    "agentCount": "{count} agents",
+    "agentCountOne": "1 agent",
+    "backToPlugin": "← {name}"
+  }
+}

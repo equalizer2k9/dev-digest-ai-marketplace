@@ -1,2 +1,9 @@
 # claude plugin eval output
 plugins/*/evals/results/
+
+# catalog site: generated data, build output, local-only notes and screenshots
+site/public/*.json
+site/public/bodies/
+site/dist/
+site/node_modules/
+docs/temp/
