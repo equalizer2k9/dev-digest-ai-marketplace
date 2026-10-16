@@ -29,6 +29,15 @@ export function GettingStartedPage({ catalog }: { catalog: Catalog }) {
       <CopyCommand command={`claude plugin marketplace update ${marketplace.name}`} label={copy} />
       <CopyCommand command={`claude plugin update ${example}@${marketplace.name}`} label={copy} />
 
+      <h2>{t('gettingStarted.channelsTitle')}</h2>
+      <p>{t('gettingStarted.channelsText')}</p>
+      <CopyCommand command={`claude plugin marketplace add ${repo}#stable --scope project`} label={copy} />
+      <p>
+        <a href={`${marketplace.repository}/blob/main/docs/RELEASES.md#rollback`} target="_blank" rel="noopener noreferrer">
+          {t('gettingStarted.channelsLink')}
+        </a>
+      </p>
+
       <h2>{t('gettingStarted.verifyTitle')}</h2>
       <p>{t('gettingStarted.verifyText')}</p>
       <CopyCommand command="claude plugin list" label={copy} />
