@@ -47,16 +47,8 @@ Unless the project instructions explicitly say otherwise:
 
 Never weaken, skip or delete a test to make it pass. Agents never commit, push or open a PR.
 
-## 5. Pipeline
-
-```
-research-tools:researcher        (optional, facts with evidence)
-  → sdd-engineering:spec-creator          spec.md   (Status: draft → user approves)
-  → sdd-engineering:implementation-planner plan.md
-  → /sdd-engineering:run-plan             implementer → architecture-review:architecture-reviewer
-                                          → fix rounds → sdd-engineering:plan-verifier → verification.md
-```
+## 5. Names
 
 Refer to every component by its namespaced name. Stack skills come from `engineering-paved-path`
 (`engineering-paved-path:<skill>`); project skills under `.claude/skills/` are used as well when
-they cover the touched area.
+they cover the touched area. The pipeline order is in the plugin README.
