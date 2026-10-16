@@ -19,3 +19,4 @@ Initial release, extracted from the DevDigest harness and de-personalised.
 - Artifact paths default to `specs/<feature>/{spec,plan,verification}.md`; check commands come from project instructions or `package.json`, otherwise the agents stop.
 - `implementer` picks `engineering-paved-path` skills by the stack of the files it changes.
 - Moved duplicated agent instructions to the shared `CONVENTIONS.md` and the planner's rarely used `BLOCKED` report formats to `references/blocked.md`; the pipeline diagram lives only in the README. No behaviour change.
+- `spec-creator`: may read code to understand current behaviour but never cites it — no file paths, `file:line` or code identifiers in a spec, with a "not this / this" example and a self-check line.
