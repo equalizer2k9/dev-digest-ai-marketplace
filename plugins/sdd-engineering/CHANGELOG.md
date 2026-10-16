@@ -3,6 +3,20 @@
 All notable changes to this plugin. Versions follow [SemVer](https://semver.org/); see
 [docs/RELEASES.md](../../docs/RELEASES.md).
 
+## 1.1.0 — 2026-10-16
+
+Backward compatible: specs that already trace every requirement are unaffected; dependencies unchanged.
+
+### Added
+
+- `spec-creator` requirement coverage gate: user stories and non-functional requirements are numbered (`US-n`, `NFR-n`), every AC names the requirements it covers (`AC-9 (NFR-1)`), and a requirement no verifiable AC can cover is listed under Open questions as `requirement without AC` — the spec stays `draft` and is reported as not ready for planning. New self-check line.
+- Eval case `spec-requires-ac` ("search should be fast" next to functional requirements): fails on 1.0.0, passes on 1.1.0.
+
+### Known issues
+
+- `implementation-planner` is not picked up by a natural "plan the implementation of …" request — the main session plans inline. Name the agent explicitly (`Use sdd-engineering:implementation-planner on …`).
+- `implementation-planner` can write the absolute repository path into a task's `Verify` line.
+
 ## 1.0.0 — 2026-10-16
 
 Initial release, extracted from the DevDigest harness and de-personalised.
