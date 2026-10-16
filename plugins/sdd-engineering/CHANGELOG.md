@@ -18,3 +18,4 @@ Initial release, extracted from the DevDigest harness and de-personalised.
 - `workflow-retro` runs `scripts/collect.mjs` via `${CLAUDE_SKILL_DIR}`; ledger path is an argument with default `docs/retros/ledger.md`.
 - Artifact paths default to `specs/<feature>/{spec,plan,verification}.md`; check commands come from project instructions or `package.json`, otherwise the agents stop.
 - `implementer` picks `engineering-paved-path` skills by the stack of the files it changes.
+- Moved duplicated agent instructions to the shared `CONVENTIONS.md` and the planner's rarely used `BLOCKED` report formats to `references/blocked.md`; the pipeline diagram lives only in the README. No behaviour change.

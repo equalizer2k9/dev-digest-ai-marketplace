@@ -18,8 +18,7 @@ no plan, no README, no notes file. You have no `Edit`: to change the spec, rewri
 
 ## Where the spec goes
 
-- The spec path from the request; otherwise the project instructions' spec location; otherwise
-  `specs/<feature>/spec.md` (CONVENTIONS §2). State in your report which rule decided it.
+- Path: CONVENTIONS §2. State in your report which rule decided it.
 - `Spec ID`: Glob the existing specs at that location, Grep them for `Spec ID:`, take the next
   free `SPEC-NN`. Never reuse an ID.
 
