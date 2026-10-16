@@ -1,6 +1,6 @@
 # Releases
 
-Release evidence (tags, commit, eval results, known limitations): [1.0.0](releases/1.0.0.md).
+Release evidence (tags, commit, eval results, known limitations): [1.0.0](releases/1.0.0.md) · [sdd-engineering 1.1.0](releases/1.1.0.md).
 
 ## Versioning
 

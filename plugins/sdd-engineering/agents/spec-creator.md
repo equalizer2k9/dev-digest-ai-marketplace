@@ -95,6 +95,19 @@ Split anything joined by "and" into separate IDs. Keep the source's own level an
 has one — `AC-3 (P1-3)` — so the verifier can map back. IDs are stable: never renumber on a
 rewrite; retire an ID rather than reuse it.
 
+### Requirement coverage
+
+Number the requirements: user stories `US-1`, `US-2`, …; non-functional requirements `NFR-1`,
+`NFR-2`, …. Each AC names in parentheses every requirement it covers — `AC-4 (US-2)`,
+`AC-9 (NFR-1)`, `AC-3 (P1-3, US-1)`.
+
+Every requirement needs at least one AC that names it. A requirement you cannot cover with a
+verifiable AC — "should be fast" with no target, "easy to use" — is not ready. List it under
+`## Open questions` as
+`[NEEDS CLARIFICATION: requirement without AC — <ID>: <requirement>; <what would make it verifiable>]`.
+The spec then stays `Status: draft` and is not ready for planning. Never invent a threshold to
+close the gap.
+
 ### Inputs and provenance
 
 One row per input the feature consumes, each tagged with exactly one of:
@@ -137,9 +150,12 @@ Before you finish, re-read the file you wrote and check every line; fix and rewr
 - [ ] No file path, `file:line` or code identifier anywhere in the spec.
 - [ ] Non-goals are explicit.
 - [ ] Every `[NEEDS CLARIFICATION]` is closed — or listed under `## Open questions`.
+- [ ] Every `US-n` and `NFR-n` is named by at least one AC — or listed under `## Open questions` as a
+      requirement without AC.
 
 ## Report
 
 End with: the spec path and which rule chose it, the `Spec ID`, the count of AC, the checklist
-with each line's result, and every `[NEEDS CLARIFICATION]` still open. A spec with open markers is
-not ready for `sdd-engineering:implementation-planner` — say so plainly.
+with each line's result, every requirement without AC, and every `[NEEDS CLARIFICATION]` still
+open. A spec with a requirement without AC or an open marker is not ready for
+`sdd-engineering:implementation-planner` — say so plainly.

@@ -1,0 +1,28 @@
+schema_version: "1.1"
+name: spec-requires-ac
+description: A requirement that naturally has no acceptance criterion (an unmeasurable "should be fast") is either covered by an AC that names it or listed as a requirement without AC, which keeps the spec from being ready.
+tags: [single-arm, write]
+runs: 2
+plugins: ["../..", "../../../engineering-paved-path", "../../../research-tools", "../../../architecture-review"]
+execution:
+  prompt: "Prepare a spec for searching todos (feature name: `todo-search`). Listing todos can be filtered by a text that the title contains, case-insensitively. An empty search text is rejected. Results keep their creation order. Search should be fast."
+  max_turns: 20
+  timeout_seconds: 600
+  allowed_tools: [Read, Glob, Grep, Agent, Write]
+context:
+  scaffold_script: scaffold.sh
+graders:
+  - name: spec-file-created
+    type: file_exists
+    path: specs/todo-search/spec.md
+  - name: speed-requirement-covered-or-flagged
+    # Either an AC names the non-functional requirement it covers, or the speed requirement is
+    # listed explicitly as a requirement without an acceptance criterion.
+    type: regex
+    target: { source: file, path: specs/todo-search/spec.md }
+    pattern: '\bAC-\d+\b[^\n]*\bNFR-\d+\b|without (an )?(AC|acceptance criteri)[^\n]*(fast|speed|latenc|perform|quick|respon)|(fast|speed|latenc|perform|quick|respon)[^\n]*without (an )?(AC|acceptance criteri)'
+    flags: i
+  - name: spec-creator-dispatched
+    type: tool_used
+    tool: Agent
+    input_match: 'sdd-engineering:spec-creator'
