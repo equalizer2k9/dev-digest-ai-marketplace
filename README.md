@@ -4,6 +4,9 @@ A [Claude Code plugin marketplace](https://code.claude.com/docs/en/plugins/creat
 reusable part of the [DevDigest](https://github.com/equalizer2k9/dev-digest) AI harness: spec-driven
 workflow agents (spec → plan → implement → verify), engineering-insight logging, and technical skills.
 
+**Catalog:** <https://equalizer2k9.github.io/dev-digest-ai-marketplace/> — search plugins, skills
+and agents, read their docs, copy the install command ([spec](docs/SITE-SPEC.md)).
+
 Project-specific rules stay in DevDigest. Everything here must work in any repository — see
 [docs/PLUGIN-GUIDELINES.md](docs/PLUGIN-GUIDELINES.md).
 
@@ -25,6 +28,8 @@ Installing `sdd-engineering` installs the other three as dependencies.
 plugins/<plugin-name>/            # one directory per plugin (relative-path source)
 docs/                             # guidelines, security, releases, cost baseline
 .github/workflows/validate.yml    # CI: claude plugin validate --strict + path/secret checks
+scripts/build-index.mjs           # catalog data from the manifests (no dependencies)
+site/                             # catalog site: React + Vite, deployed by .github/workflows/pages.yml
 ```
 
 ## Add the marketplace

@@ -50,3 +50,29 @@ jobs:
             printf '%s\n' $hits $envfiles
             exit 1
           fi
+
+  site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+
+      - name: Build catalog index
+        run: node scripts/build-index.mjs
+
+      - name: Test build-index
+        run: node --test scripts/*.test.mjs
+
+      - name: Install site dependencies
+        working-directory: site
+        run: npm ci --no-audit --no-fund
+
+      - name: Typecheck and build site
+        working-directory: site
+        run: npm run build
