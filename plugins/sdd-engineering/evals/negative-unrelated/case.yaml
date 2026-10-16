@@ -1,0 +1,30 @@
+schema_version: "1.1"
+name: negative-unrelated
+description: A general JavaScript question activates no sdd-engineering agent or skill and creates no files.
+tags: [ablation, write]
+runs: 2
+plugins: ["../..", "../../../engineering-paved-path", "../../../research-tools", "../../../architecture-review"]
+execution:
+  prompt: "What does Array.prototype.flat do?"
+  max_turns: 5
+  timeout_seconds: 180
+  allowed_tools: [Read, Glob, Grep, Agent, Skill, Write]
+graders:
+  - name: no-sdd-agent
+    type: tool_used
+    tool: Agent
+    input_match: 'sdd-engineering:'
+    min: 0
+    max: 0
+    arm: both
+  - name: no-sdd-skill
+    type: tool_used
+    tool: Skill
+    input_match: 'sdd-engineering:|run-plan|workflow-retro|engineering-insights'
+    min: 0
+    max: 0
+    arm: both
+  - name: no-files-created
+    type: file_exists
+    path: '**/*'
+    exists: false

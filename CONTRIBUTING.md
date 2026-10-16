@@ -81,7 +81,19 @@ Users get a change only when `version` changes — the cached copy is keyed by i
 - [ ] no absolute paths, secrets, private memory or project-specific rules ([guidelines](docs/PLUGIN-GUIDELINES.md))
 - [ ] hooks and scripts reviewed line by line ([security](docs/SECURITY.md))
 - [ ] plugin `README.md` updated; cost row added to [docs/COST-BASELINE.md](docs/COST-BASELINE.md)
+- [ ] before a release of a plugin that has `evals/`: run its behavior evals locally (see below)
 - [ ] after merge: tag the release ([docs/RELEASES.md](docs/RELEASES.md))
+
+## Behavior evals
+
+Evals call the model on your account, so CI does not run them. Before releasing a plugin with an
+`evals/` directory, run them locally **from the repository root** and record the result in
+[docs/COST-BASELINE.md](docs/COST-BASELINE.md):
+`claude plugin eval . --eval-dir plugins/<plugin>/evals --scaffold --trust-plugin --runs 2 --max-cost-usd 3 --no-publish`
+— from the root, so a case's `plugins:` list can load the plugin's dependencies (run from the plugin
+directory, a plugin with `dependencies` loads disabled). Add `--allow-tools Write` for cases tagged
+`write`, and `--tag ablation --ablation with-without` / `--tag single-arm --ablation none` to keep the
+no-plugin baseline only where it is meaningful.
 
 ## Branch protection
 

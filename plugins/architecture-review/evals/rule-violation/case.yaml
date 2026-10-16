@@ -1,0 +1,24 @@
+schema_version: "1.1"
+name: rule-violation
+description: The reviewer flags src/report.ts for touching the todos array directly and cites the project's own rule in CLAUDE.md.
+tags: [single-arm, read-only]
+runs: 2
+plugins: ["../..", "../../../engineering-paved-path"]
+execution:
+  prompt: "Review the architecture of my change: src/report.ts is the only changed file."
+  max_turns: 10
+  timeout_seconds: 400
+  allowed_tools: [Read, Glob, Grep, Agent]
+context:
+  scaffold_script: scaffold.sh
+graders:
+  - name: reviewer-dispatched
+    type: tool_used
+    tool: Agent
+    input_match: 'architecture-review:architecture-reviewer'
+  - name: flags-report-ts
+    type: regex
+    pattern: 'report\.ts:\d+'
+  - name: cites-project-rule
+    type: regex
+    pattern: 'CLAUDE\.md'

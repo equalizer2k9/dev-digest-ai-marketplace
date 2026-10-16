@@ -1,0 +1,23 @@
+schema_version: "1.1"
+name: no-rules
+description: With no documented architecture rules, the reviewer says so instead of inventing rules.
+tags: [single-arm, read-only]
+runs: 2
+plugins: ["../..", "../../../engineering-paved-path"]
+execution:
+  prompt: "Review the architecture of my change: src/report.ts is the only changed file."
+  max_turns: 10
+  timeout_seconds: 400
+  allowed_tools: [Read, Glob, Grep, Agent]
+context:
+  scaffold_script: scaffold.sh
+graders:
+  - name: reviewer-dispatched
+    type: tool_used
+    tool: Agent
+    input_match: 'architecture-review:architecture-reviewer'
+  - name: says-no-rules
+    # The reviewer's own report (in the trace), not the main session's paraphrase of it.
+    type: regex
+    target: trace
+    pattern: 'No documented architecture rules found'

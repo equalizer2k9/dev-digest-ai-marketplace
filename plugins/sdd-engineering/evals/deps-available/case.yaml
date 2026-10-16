@@ -1,0 +1,18 @@
+schema_version: "1.1"
+name: deps-available
+description: The namespaced agents of the declared dependencies are available in a session with sdd-engineering.
+tags: [single-arm, read-only]
+runs: 2
+plugins: ["../..", "../../../engineering-paved-path", "../../../research-tools", "../../../architecture-review"]
+execution:
+  prompt: "Without dispatching anything: which subagent types can you dispatch right now whose names start with `research-tools:` or `architecture-review:`? Reply with the exact names only, one per line, or `none`."
+  max_turns: 2
+  timeout_seconds: 120
+  allowed_tools: [Agent]
+graders:
+  - name: researcher-available
+    type: regex
+    pattern: 'research-tools:researcher'
+  - name: architecture-reviewer-available
+    type: regex
+    pattern: 'architecture-review:architecture-reviewer'
