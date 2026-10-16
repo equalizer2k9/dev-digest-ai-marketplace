@@ -1,0 +1,21 @@
+{
+  "name": "engineering-paved-path",
+  "version": "1.0.0",
+  "description": "Stack skills the architecture-review and sdd-engineering plugins load: Fastify, Drizzle ORM, PostgreSQL table design, React, React Testing Library and Zod.",
+  "author": {
+    "name": "equalizer2k9",
+    "url": "https://github.com/equalizer2k9"
+  },
+  "homepage": "https://github.com/equalizer2k9/dev-digest-ai-marketplace/tree/main/plugins/engineering-paved-path",
+  "repository": "https://github.com/equalizer2k9/dev-digest-ai-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "fastify",
+    "drizzle",
+    "postgresql",
+    "react",
+    "testing-library",
+    "zod"
+  ]
+}

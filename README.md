@@ -7,7 +7,16 @@ workflow agents (spec → plan → implement → verify), engineering-insight lo
 Project-specific rules stay in DevDigest. Everything here must work in any repository — see
 [docs/PLUGIN-GUIDELINES.md](docs/PLUGIN-GUIDELINES.md).
 
-> Status: skeleton. The plugin list in `.claude-plugin/marketplace.json` is empty for now.
+## Plugins
+
+| Plugin | What it gives you | Depends on |
+|---|---|---|
+| [engineering-paved-path](plugins/engineering-paved-path/) | Stack skills: Fastify, Drizzle, PostgreSQL table design, React, React Testing Library, Zod | — |
+| [research-tools](plugins/research-tools/) | Read-only `researcher` agent with file:line / URL evidence | — |
+| [architecture-review](plugins/architecture-review/) | Read-only `architecture-reviewer` agent that judges against the project's own documented rules | engineering-paved-path |
+| [sdd-engineering](plugins/sdd-engineering/) | Spec → plan → implement → review → verify pipeline, workflow retro, engineering insights | all three above |
+
+Installing `sdd-engineering` installs the other three as dependencies.
 
 ## Layout
 
@@ -15,7 +24,7 @@ Project-specific rules stay in DevDigest. Everything here must work in any repos
 .claude-plugin/marketplace.json   # the catalog: name, owner, plugins[]
 plugins/<plugin-name>/            # one directory per plugin (relative-path source)
 docs/                             # guidelines, security, releases, cost baseline
-.github/workflows/validate.yml    # CI: claude plugin validate + path/secret checks
+.github/workflows/validate.yml    # CI: claude plugin validate --strict + path/secret checks
 ```
 
 ## Add the marketplace
