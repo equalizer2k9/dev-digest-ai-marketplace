@@ -98,6 +98,14 @@ Then start a new session, or run `/reload-plugins` in an open one. **Smoke check
 init lists `…/dev-digest-ai-marketplace-stable/sdd-engineering/1.0.0`, and a short spec request
 behaves like 1.0.0.
 
+The smoke check uses a headless session. `claude plugin eval <plugin>@<marketplace>` cannot load
+our cases from an installed copy, because their `plugins:` paths assume the repository layout.
+Run the behaviour check in a tree without specs written by the newer version: spec-creator follows
+the format of existing specs, so it would copy that version's format.
+
+Rehearsed on 2026-10-16 in bookmarks-api: switch 34 s, back to latest 11 s
+([evidence](https://github.com/equalizer2k9/bookmarks-api/blob/main/docs/evidence/rollback-rehearsal.md)).
+
 **Back to latest:**
 
 ```bash
