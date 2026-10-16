@@ -1,5 +1,7 @@
 # Releases
 
+Release evidence (tags, commit, eval results, known limitations): [1.0.0](releases/1.0.0.md).
+
 ## Versioning
 
 - SemVer `MAJOR.MINOR.PATCH` in each plugin's `plugin.json` → `version` (see
