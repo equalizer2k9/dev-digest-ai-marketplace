@@ -4,6 +4,8 @@ A [Claude Code plugin marketplace](https://code.claude.com/docs/en/plugins/creat
 reusable part of the [DevDigest](https://github.com/equalizer2k9/dev-digest) AI harness: spec-driven
 workflow agents (spec → plan → implement → verify), engineering-insight logging, and technical skills.
 
+**HW8 summary:** [docs/HW8-SUMMARY.md](docs/HW8-SUMMARY.md) — what was built, acceptance evidence, cost, findings.
+
 **Catalog:** <https://equalizer2k9.github.io/dev-digest-ai-marketplace/> — search plugins, skills
 and agents, read their docs, copy the install command ([spec](docs/SITE-SPEC.md)).
 
