@@ -77,6 +77,9 @@
     "installScopeText": "Add --scope project to enable it for the repository instead of only for you. Dependencies are installed with it.",
     "updateTitle": "3. Keep it up to date",
     "updateText": "Auto-update is off for third-party marketplaces. Turn it on in /plugin → Marketplaces, or update manually:",
+    "channelsTitle": "Channels: latest and stable",
+    "channelsText": "Latest (dev-digest-ai-marketplace) serves every release from main. Stable (dev-digest-ai-marketplace-stable, added with #stable) serves the last release that passed a smoke eval on latest, so you can roll back by switching channels. Enable only one channel at a time.",
+    "channelsLink": "Rollback and promotion procedure",
     "verifyTitle": "4. Verify",
     "verifyText": "List installed plugins and see what one adds to your sessions:"
   },
