@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "dev-digest-ai-marketplace",
-  "description": "Reusable Claude Code plugins extracted from the DevDigest harness: spec-driven workflow agents, engineering-insight logging and technical skills.",
+  "name": "dev-digest-ai-marketplace-stable",
+  "description": "Stable channel of dev-digest-ai-marketplace: the last verified release of each plugin. Reusable Claude Code plugins extracted from the DevDigest harness: spec-driven workflow agents, engineering-insight logging and technical skills.",
   "owner": {
     "name": "equalizer2k9",
     "url": "https://github.com/equalizer2k9"
