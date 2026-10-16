@@ -1,0 +1,24 @@
+{
+  "name": "architecture-review",
+  "version": "1.0.0",
+  "description": "Read-only architecture reviewer agent that judges a change or plan only against the project's own documented architecture rules.",
+  "author": {
+    "name": "equalizer2k9",
+    "url": "https://github.com/equalizer2k9"
+  },
+  "homepage": "https://github.com/equalizer2k9/dev-digest-ai-marketplace/tree/main/plugins/architecture-review",
+  "repository": "https://github.com/equalizer2k9/dev-digest-ai-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "architecture",
+    "review",
+    "agent",
+    "read-only"
+  ],
+  "dependencies": [
+    {
+      "name": "engineering-paved-path",
+      "version": "^1.0.0"
+    }
+  ]
+}

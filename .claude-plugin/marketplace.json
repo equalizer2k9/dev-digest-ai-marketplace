@@ -6,5 +6,30 @@
     "name": "equalizer2k9",
     "url": "https://github.com/equalizer2k9"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "engineering-paved-path",
+      "source": "./plugins/engineering-paved-path",
+      "description": "Stack skills the architecture-review and sdd-engineering plugins load: Fastify, Drizzle ORM, PostgreSQL table design, React, React Testing Library and Zod.",
+      "category": "skills"
+    },
+    {
+      "name": "research-tools",
+      "source": "./plugins/research-tools",
+      "description": "Read-only researcher agent: answers how-does-X-work questions with file:line evidence from the repo or URL evidence from official sources.",
+      "category": "research"
+    },
+    {
+      "name": "architecture-review",
+      "source": "./plugins/architecture-review",
+      "description": "Read-only architecture reviewer agent that judges a change or plan only against the project's own documented architecture rules.",
+      "category": "review"
+    },
+    {
+      "name": "sdd-engineering",
+      "source": "./plugins/sdd-engineering",
+      "description": "Spec-driven development pipeline: spec-creator, implementation-planner, implementer and plan-verifier agents, plus run-plan, workflow-retro and engineering-insights skills.",
+      "category": "workflow"
+    }
+  ]
 }
