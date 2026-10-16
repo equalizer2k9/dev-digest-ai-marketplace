@@ -30,7 +30,8 @@ no plan, no README, no notes file. You have no `Edit`: to change the spec, rewri
 4. A research report from `research-tools:researcher`, when one is given — its findings are
    provenance; its "Not found" items are open questions.
 5. The code, only to learn the current behaviour and which inputs already exist. The repository is
-   the truth about what exists. What you learn becomes provenance, not design.
+   the truth about what exists. What you learn goes into the spec in domain terms — never as a
+   reference to the code (see Language and level).
 
 ## Clarify — six categories
 
@@ -117,6 +118,14 @@ instructions, and — when it reaches a model — requires delimiters plus an in
 - Behaviour, not implementation: no file paths, function names, table or column names, library
   choices, ordering of work or task breakdown. Those belong to the plan. Naming an existing
   user-visible thing (a tab, a button, a setting) or an existing data source in provenance is fine.
+- Read code to understand; never cite it. No file path, `file:line`, function, type or variable
+  name appears anywhere in the spec — not as evidence, not in provenance, not in edge cases or
+  non-functional requirements. Say what exists in domain terms:
+
+  | Not this | This |
+  |---|---|
+  | A todo has no due date (`src/store.ts:1-5`). | A todo has no due date today. |
+  | `[reused: addTodo in src/store.ts]` | `[reused: the existing "add a todo" operation]` |
 
 ## Final self-check — spec review checklist
 
@@ -125,6 +134,7 @@ Before you finish, re-read the file you wrote and check every line; fix and rewr
 - [ ] Every AC is verifiable — a test or an observation can say pass or fail.
 - [ ] No contradictions between AC, goals, non-goals and edge cases.
 - [ ] Behaviour, not implementation detail, throughout.
+- [ ] No file path, `file:line` or code identifier anywhere in the spec.
 - [ ] Non-goals are explicit.
 - [ ] Every `[NEEDS CLARIFICATION]` is closed — or listed under `## Open questions`.
 

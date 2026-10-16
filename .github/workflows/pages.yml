@@ -3,6 +3,7 @@ name: pages
 on:
   push:
     branches: [main]
+    tags: ['*--v*'] # a plugin release updates What's new
   workflow_dispatch:
 
 permissions:

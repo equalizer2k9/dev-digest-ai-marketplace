@@ -104,7 +104,13 @@ the spec).
   measurably at this sample size.
 
 The edit is kept as a maintenance change: each rule now lives in one place. It is not claimed as a
-cost win. The real quality issue it surfaced — `spec-creator` sometimes citing file paths — is a
+cost win.
+
+**Quality gate after the follow-up fix (`fix/spec-no-paths`):** `spec-creator` may read code but
+must not cite it in a spec. With the same command and model, `spec-due-date` passes **3/3** (median
+$0.245, 67 s; range $0.242–0.294, 54–92 s). Spot checks pass too: `plan-from-spec` 1/1 ($0.38) and
+`negative-unrelated` 1/1 ($0.07). The gate is now green. The cost difference is still not
+claimed: these are different runs with n = 3. The real quality issue it surfaced — `spec-creator` sometimes citing file paths — is a
 separate behaviour fix for a later change.
 
 ### Method
