@@ -1,0 +1,50 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code@2.1.301
+
+      - name: Validate marketplace and plugins
+        run: claude plugin validate .
+
+      - name: No absolute paths in plugins/
+        run: |
+          # Prints file:line only, so a matched line can't leak anything else.
+          hits=$(grep -rnIE -e '/Users/' -e '/home/' -e '[A-Z]:\\' plugins/ | cut -d: -f1,2 || true)
+          if [ -n "$hits" ]; then
+            echo "::error::Absolute path found in plugins/ — use \${CLAUDE_PLUGIN_ROOT} / \${CLAUDE_SKILL_DIR}"
+            printf '%s\n' $hits
+            exit 1
+          fi
+
+      - name: No secrets in plugins/
+        # Prints file:line only, never the matched value.
+        run: |
+          pattern='(sk-ant-[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9]{32,}|gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|xox[abprs]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY-----)'
+          hits=$(grep -rnIE "$pattern" plugins/ | cut -d: -f1,2 || true)
+          envfiles=$(find plugins -type f \( -name '.env' -o -name '.env.*' -o -name '*.pem' -o -name '*.key' \) || true)
+          if [ -n "$hits$envfiles" ]; then
+            echo "::error::Possible secret in plugins/:"
+            printf '%s\n' $hits $envfiles
+            exit 1
+          fi
